@@ -20,6 +20,10 @@ Install all dependencies:
 
 `$> pip install -r requirements.txt`
 
+Create the data base:
+
+`$> flask --app wallacabanyes init-db-wallacabanyes`
+
 Launch application and have fun!
 
 `$> flask --app wallacabanyes run`
