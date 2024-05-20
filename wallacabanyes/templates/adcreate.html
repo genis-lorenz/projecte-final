@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creació d'anunci</title>
+</head>
+<body>
+    <form method="POST">
+        <label for="name">Nom de l'article:</label>
+        <input type="text" id="name" name="name" required><br>
+        <label for="description">Descripció:</label>
+        <input type="text" id="description" name="description"><br>
+
+        {% for subject in subjects %}
+            <input type="checkbox" id="{{ subject }}" name="subject_check" value="{{ subject }}">
+            <label for="{{ subject }}">{{ subject }}</label><br>
+        {% endfor %}
+
+        <label for="size">Mida:</label>
+        <input type="text" id="size" name="size"><br>
+        <label for="price">Preu:</label>
+        <input type="number" id="price" name="price" min="0" required><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
