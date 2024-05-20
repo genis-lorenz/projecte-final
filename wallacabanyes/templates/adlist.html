@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Llistat d'anuncis</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Nom</th>
+            <th>Matèries</th>
+            <th>Preu</th>
+            <th>Usuari</th>
+        </tr>
+        {% for ad in ads %}
+        <tr>
+            <th>{{ ad['name'] }}</th>
+            <th>{{ ad['subjects'] }}</th>
+            <th>{{ ad['price'] }}</th>
+            <th>{{ ad['username'] }}</th>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

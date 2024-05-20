@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, flash
+from flask import Blueprint, request, render_template
 from wallacabanyes.db import get_db
 
 bp = Blueprint('adcreate', __name__)
@@ -6,8 +6,8 @@ bp = Blueprint('adcreate', __name__)
 @bp.route('/create', methods=('GET', 'POST'))
 def create():
     user_id = 1
+    cfgm = [ 'Hípica', 'Dinàmica', 'Itineraris', 'Muntanya', 'Bicicleta', 'Lleure', 'Natació', 'SOS', 'Aquàtic', 'Cordes']
     if request.method == 'GET':
-        cfgm = [ 'Hípica', 'Dinàmica', 'Itineraris', 'Muntanya', 'Bicicleta', 'Lleure', 'Natació', 'SOS', 'Aquàtic', 'Cordes']
         return render_template('adcreate.html', subjects=cfgm)
     
     name = request.form['name']
@@ -24,5 +24,6 @@ def create():
         "INSERT INTO ad (user_id, name, description, size, price, subjects) VALUES (?, ?, ?, ?, ?, ?)",
         (user_id, name, description, size, price, ','.join(subjects)),
     )
+    db.commit()
 
-    return render_template('adlist.html')
+    return render_template('adcreate.html', subjects=cfgm)

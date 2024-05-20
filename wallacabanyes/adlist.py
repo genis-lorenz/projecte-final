@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
 from wallacabanyes.db import get_db
 
 bp = Blueprint('adlist', __name__)
@@ -8,7 +8,7 @@ def adlist():
     db = get_db()
 
     ads = db.execute(
-        'SELECT * FROM ad'
+        'SELECT user.username as username, ad.name as name, ad.subjects as subjects, ad.price as price FROM ad LEFT JOIN user on ad.user_id  = user.id'
     ).fetchall()
 
-    return f"Llistat d'anuncis\nId: {ads[0]['id']} Name: {ads[0]['name']} Subjects: {ads[0]['subjects']} Price: {ads[0]['price']}"
+    return render_template('adlist.html', ads=ads)
