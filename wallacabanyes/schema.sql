@@ -19,6 +19,12 @@ CREATE TABLE ad (
     FOREIGN KEY(user_id) REFERENCES user(id) ON DELETE CASCADE
 );
 
+CREATE TABLE img (
+  user_id INTEGER NOT NULL,
+  filename TEXT NOT NULL,
+  FOREIGN KEY(user_id) REFERENCES user(id) ON DELETE CASCADE
+);
+
 INSERT INTO user (username, password, grade)
 VALUES ('test@alumnat.institutcabanyes.cat', 'test', 'CFGM');
 

@@ -1,7 +1,16 @@
+import os
 from flask import Blueprint, request, render_template
+from werkzeug.utils import secure_filename
 from wallacabanyes.db import get_db
 
 bp = Blueprint('adcreate', __name__)
+
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+UPLOAD_FOLDER = "img"
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @bp.route('/create', methods=('GET', 'POST'))
 def create():
@@ -19,10 +28,26 @@ def create():
     if not subjects:
         return render_template('error.html', error='No has seleccionat matèria')
     
+    if 'file' not in request.files:
+        return render_template('error.html', error='No has seleccionat imatges')
+    
+    file = request.files['file']
+    if file.filename == '' or not allowed_file(file.filename):
+        return render_template('error.html', error='No has seleccionat imatges o tipus de fitxer no permés')
+
+    filename = secure_filename(file.filename)
+    dirname = os.path.dirname(__file__)
+    path = os.path.join(dirname, UPLOAD_FOLDER, filename)
+    file.save(path)
+
     db = get_db()
     db.execute(
         "INSERT INTO ad (user_id, name, description, size, price, subjects) VALUES (?, ?, ?, ?, ?, ?)",
         (user_id, name, description, size, price, ','.join(subjects)),
+    )
+    db.execute(
+        "INSERT INTO img (user_id, filename) VALUES (?, ?)",
+        (user_id, filename)
     )
     db.commit()
 
