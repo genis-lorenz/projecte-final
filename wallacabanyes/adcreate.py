@@ -6,7 +6,7 @@ from wallacabanyes.db import get_db
 bp = Blueprint('adcreate', __name__)
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
-UPLOAD_FOLDER = "img"
+UPLOAD_FOLDER = "static"
 
 def allowed_file(filename):
     return '.' in filename and \

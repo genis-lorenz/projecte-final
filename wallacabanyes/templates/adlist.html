@@ -11,14 +11,14 @@
             <th>Nom</th>
             <th>Matèries</th>
             <th>Preu</th>
-            <th>Usuari</th>
+            <th>Imatge</th>
         </tr>
         {% for ad in ads %}
         <tr>
             <th>{{ ad['name'] }}</th>
             <th>{{ ad['subjects'] }}</th>
             <th>{{ ad['price'] }}</th>
-            <th>{{ ad['username'] }}</th>
+            <th><img src="{{ url_for('static', filename=ad['img']) }}" /></th>
         </tr>
         {% endfor %}
     </table>
