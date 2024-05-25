@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
 from markupsafe import escape
 from wallacabanyes.db import get_db
 
@@ -9,7 +9,9 @@ def detail(id):
     db = get_db()
 
     ad = db.execute(
-        'SELECT * FROM ad WHERE id = ?', id
+        'SELECT user.username as username, ad.name as name, ad.description as description, ad.size as size, ad.subjects as subjects, ad.price as price ' + 
+        'FROM ad LEFT JOIN user on ad.user_id  = user.id ' + 
+        'WHERE ad.id = ?', id
     ).fetchone()
 
-    return f"Detall de l'anunci amb id {escape(id)}\nName: {ad['name']} Subjects: {ad['subjects']} Price: {ad['price']}"
+    return render_template('addetail.html', ad=ad)
