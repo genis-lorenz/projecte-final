@@ -36,8 +36,9 @@ def create():
         return render_template('error.html', error='No has seleccionat imatges o tipus de fitxer no permés')
 
     filename = secure_filename(file.filename)
+    userfilename = str(user_id) + '-' + filename
     dirname = os.path.dirname(__file__)
-    path = os.path.join(dirname, UPLOAD_FOLDER, filename)
+    path = os.path.join(dirname, UPLOAD_FOLDER, userfilename)
     file.save(path)
 
     db = get_db()
@@ -47,7 +48,7 @@ def create():
     )
     db.execute(
         "INSERT INTO img (user_id, filename) VALUES (?, ?)",
-        (user_id, filename)
+        (user_id, userfilename)
     )
     db.commit()
 
