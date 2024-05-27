@@ -18,7 +18,7 @@
             <th>{{ ad['name'] }}</th>
             <th>{{ ad['subjects'] }}</th>
             <th>{{ ad['price'] }}</th>
-            <th><img src="{{ url_for('static', filename=ad['img']) }}" /></th>
+            <th><img src="{{ url_for('adimage.serve_image', filename=ad['img']) }}" /></th>
         </tr>
         {% endfor %}
     </table>
