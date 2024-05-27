@@ -1,0 +1,88 @@
+/* static/css/create.css */
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #1c1c1c; /* Cambia el color de fondo a un rojo más oscuro */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%; /* Aumenta el ancho del contenedor */
+    max-width: 1200px;
+    border: 1px solid #ccc; /* Añade un borde al contenedor */
+    border-radius: 8px;
+    overflow: hidden; /* Para ocultar el exceso de contenido */
+    background-color: white; /* Cambia el fondo del contenedor a blanco */
+}
+
+.image-container {
+    flex: 1; /* El 50% del ancho del contenedor */
+    display: flex;
+    justify-content: center; /* Centra la imagen horizontalmente */
+    align-items: center; /* Centra la imagen verticalmente */
+}
+
+.image-container img {
+    max-width: 100%; /* Asegura que la imagen no se desborde */
+    max-height: 100%; /* Asegura que la imagen no se desborde */
+}
+
+.form-container {
+    flex: 1; /* El 50% del ancho del contenedor */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.form-container form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: span 2;
+}
+
+.form-container label {
+    font-size: 14px;
+}
+
+.form-container input[type="text"],
+.form-container input[type="number"],
+.form-container input[type="file"] {
+    margin-top: 5px;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.form-container input[type="submit"] {
+    padding: 10px;
+    background-color: #ff3b3b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.form-container input[type="submit"]:hover {
+    background-color: #860404;
+}
+
+.form-container input[type="checkbox"] {
+    margin-right: 5px;
+}

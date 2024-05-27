@@ -4,25 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creació d'anunci</title>
+    <link rel="stylesheet" href="../static/css/create.css">
 </head>
 <body>
-    <form method="POST" enctype=multipart/form-data>
-        <label for="name">Nom de l'article:</label>
-        <input type="text" id="name" name="name" required><br>
-        <label for="description">Descripció:</label>
-        <input type="text" id="description" name="description"><br>
-        <label>Matèries:</label><br>
-        {% for subject in subjects %}
-            <input type="checkbox" id="{{ subject }}" name="subject_check" value="{{ subject }}">
-            <label for="{{ subject }}">{{ subject }}</label><br>
-        {% endfor %}
-
-        <label for="size">Mida:</label>
-        <input type="text" id="size" name="size"><br>
-        <label for="price">Preu:</label>
-        <input type="number" id="price" name="price" min="0" required><br>
-        <input type="file" id="file" name="file"><br>
-        <input type="submit" value="Submit">
-    </form>
+    <div class="container">
+        <div class="image-container">
+            <img src="../static/css/Logo.png" alt="Your Image">
+        </div>
+        <div class="form-container">
+            <form action="/submit" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="name">Nom de l'article:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Descripció:</label>
+                    <input type="text" id="description" name="description">
+                </div>
+                <div class="form-group full-width">
+                    <label>Matèries:</label><br>
+                    {% for subject in subjects %}
+                        <input type="checkbox" id="{{ subject }}" name="subject_check" value="{{ subject }}">
+                        <label for="{{ subject }}">{{ subject }}</label><br>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    <label for="size">Mida:</label>
+                    <input type="text" id="size" name="size">
+                </div>
+                <div class="form-group">
+                    <label for="price">Preu:</label>
+                    <input type="number" id="price" name="price" min="0" required>
+                </div>
+                <div class="form-group full-width">
+                    <label for="file">Fitxer:</label>
+                    <input type="file" id="file" name="file">
+                </div>
+                <div class="form-group full-width">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
