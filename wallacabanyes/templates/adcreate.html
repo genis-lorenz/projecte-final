@@ -24,8 +24,8 @@
                 <div class="form-group full-width">
                     <label>Matèries:</label><br>
                     {% for subject in subjects %}
-                        <input type="checkbox" id="{{ subject }}" name="subject_check" value="{{ subject }}">
-                        <label for="{{ subject }}">{{ subject }}</label><br>
+                        <label for="{{ subject }}">{{ subject }}</label>
+                        <input type="checkbox" class="checkbox-round" id="{{ subject }}" name="subject_check" value="{{ subject }}"><br>
                     {% endfor %}
                 </div>
                 <div class="form-group">
