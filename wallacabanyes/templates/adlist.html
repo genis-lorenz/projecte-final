@@ -13,12 +13,14 @@
     </header>
     <div class="ad-container">
         {% for ad in ads %}
-        <div class="ad-card">
-            <h2>{{ ad['name'] }}</h2>
-            <p><strong>Matèries:</strong> {{ ad['subjects'] }}</p>
-            <p><strong>Preu:</strong> {{ ad['price'] }}</p>
-            <img src="{{ url_for('adimage.serve_image', filename=ad['img']) }}" alt="Ad Image">
-        </div>
+        <a href="{{ url_for('addetail.detail', id=ad['adid']) }}">
+            <div class="ad-card">
+                <h2>{{ ad['name'] }}</h2>
+                <p><strong>Matèries:</strong> {{ ad['subjects'] }}</p>
+                <p><strong>Preu:</strong> {{ ad['price'] }}</p>
+                <img src="{{ url_for('adimage.serve_image', filename=ad['img']) }}" alt="Ad Image">
+            </div>
+        </a>            
         {% endfor %}
     </div>
 </body>
