@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión y Registro</title>
+    <link rel="stylesheet" href="../static/css/login.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2>Iniciar Sesión</h2>
+            <form action="#">
+                <input type="text" placeholder="Correo Electrónico" required>
+                <input type="password" placeholder="Contraseña" required>
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <h1>Bienvenido de Nuevo!</h1>
+            <p>Para mantenerse conectado con nosotros, por favor inicie sesión con su información personal</p>
+            <button onclick="toggleForm()">Registrarse</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleForm() {
+            document.querySelector('.form-container h2').textContent = "Registrarse";
+            document.querySelector('.form-container form').innerHTML = `
+                <input type="text" placeholder="Nombre Completo" required>
+                <input type="text" placeholder="Correo Electrónico" required>
+                <input type="password" placeholder="Contraseña" required>
+                <button type="submit">Registrarse</button>
+            `;
+            document.querySelector('.overlay-container h1').textContent = "¡Hola, Amigo!";
+            document.querySelector('.overlay-container p').textContent = "Ingrese sus datos personales y comience su viaje con nosotros";
+            document.querySelector('.overlay-container button').textContent = "Iniciar Sesión";
+            document.querySelector('.overlay-container button').onclick = function() { toggleFormBack(); };
+        }
+
+        function toggleFormBack() {
+            document.querySelector('.form-container h2').textContent = "Iniciar Sesión";
+            document.querySelector('.form-container form').innerHTML = `
+                <input type="text" placeholder="Correo Electrónico" required>
+                <input type="password" placeholder="Contraseña" required>
+                <button type="submit">Iniciar Sesión</button>
+            `;
+            document.querySelector('.overlay-container h1').textContent = "Bienvenido de Nuevo!";
+            document.querySelector('.overlay-container p').textContent = "Para mantenerse conectado con nosotros, por favor inicie sesión con su información personal";
+            document.querySelector('.overlay-container button').textContent = "Registrarse";
+            document.querySelector('.overlay-container button').onclick = function() { toggleForm(); };
+        }
+    </script>
+</body>
+</html>
