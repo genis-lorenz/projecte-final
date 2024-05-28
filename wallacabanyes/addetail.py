@@ -2,9 +2,12 @@ from flask import Blueprint, render_template
 from markupsafe import escape
 from wallacabanyes.db import get_db
 
+from .auth import login_required
+
 bp = Blueprint('addetail', __name__)
 
 @bp.route('/ad/<id>')
+@login_required
 def detail(id):
     db = get_db()
 

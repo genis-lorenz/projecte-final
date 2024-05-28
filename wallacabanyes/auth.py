@@ -4,6 +4,10 @@ from wallacabanyes.db import get_db
 
 bp = Blueprint('auth', __name__)
 
+@bp.route('/')
+def index():
+    return redirect(url_for('auth.login'))
+
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
     if request.method == 'POST':
@@ -16,9 +20,9 @@ def login():
         ).fetchone()
 
         if user is None:
-            error = 'Incorrect username.'
+            error = 'Usuari no vàlid'
         elif not user['password'] == password:
-            error = 'Incorrect password.'
+            error = 'Contrasenya incorrecta'
 
         if error is None:
             session.clear()
@@ -27,7 +31,7 @@ def login():
 
         return render_template('error.html', error=error)
 
-    return render_template('auth/login.html')
+    return render_template('login.html')
 
 @bp.before_app_request
 def load_logged_in_user():

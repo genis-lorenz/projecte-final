@@ -3,6 +3,8 @@ from flask import Blueprint, request, render_template
 from werkzeug.utils import secure_filename
 from wallacabanyes.db import get_db
 
+from .auth import login_required
+
 bp = Blueprint('adcreate', __name__)
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
@@ -13,6 +15,7 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @bp.route('/create', methods=('GET', 'POST'))
+@login_required
 def create():
     user_id = 1
     cfgm = [ 'Hípica', 'Dinàmica', 'Itineraris', 'Muntanya', 'Bicicleta', 'Lleure', 'Natació', 'SOS', 'Aquàtic', 'Cordes']
