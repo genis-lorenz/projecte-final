@@ -1,4 +1,11 @@
 /* static/css/create.css */
+body {
+    background-image: url('../css/Fondo1.jpg');
+    background-size: 105%; /* Aumenta el tamaño de la imagen al 150% del contenedor */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-attachment: fixed; /* Hace que la imagen de fondo se mantenga fija al hacer scroll */
+}
 
 body {
     display: flex;
@@ -6,6 +13,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    font-weight:750;
     font-family: Arial, sans-serif;
     background-color: #1c1c1c; /* Cambia el color de fondo a un rojo más oscuro */
 }
@@ -93,7 +101,7 @@ body {
     background-color: white;
     border-radius: 50%;
     vertical-align: middle;
-    border: 1px solid #ddd;
+    border: 1px solid black;
     appearance: none;
     -webkit-appearance: none;
     outline: none;
