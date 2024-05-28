@@ -1,0 +1,31 @@
+/* Estilo general del cuerpo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f4f4;
+    color: #721c24;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Contenedor del mensaje de error */
+.error-container {
+    background-color: #ee5c19;
+    border: 1px solid #ee5c19;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Estilo del texto de error */
+.error-container h1 {
+    font-size: 24px;
+    margin: 0 0 10px;
+}
+
+.error-container p {
+    margin: 0;
+}
