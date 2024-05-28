@@ -27,6 +27,9 @@ def create_app():
     from . import adlist
     app.register_blueprint(adlist.bp)
 
+    from . import adimage
+    app.register_blueprint(adimage.bp)
+
     from . import db
     db.init_app(app)
 

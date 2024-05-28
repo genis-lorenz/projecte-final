@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detall d'anunci</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Nom</th>
+            <th>{{ ad['name'] }}</th>
+        </tr>
+        <tr>
+            <th>Descripció</th>
+            <th>{{ ad['description'] }}</th>
+        </tr>
+        <tr>
+            <th>Matèries</th>
+            <th>{{ ad['subjects'] }}</th>
+        </tr>
+        <tr>
+            <th>Mida</th>
+            <th>{{ ad['size'] }}</th>
+        </tr>
+        <tr>
+            <th>Preu</th>
+            <th>{{ ad['price'] }}</th>
+        </tr>
+        <tr>
+            <th>Contacte</th>
+            <th><a href="mailto:{{ ad['username'] }}">Enviar correu</a></th>
+        </tr>
+    </table>
+</body>
+</html>

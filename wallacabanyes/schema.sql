@@ -19,10 +19,22 @@ CREATE TABLE ad (
     FOREIGN KEY(user_id) REFERENCES user(id) ON DELETE CASCADE
 );
 
+CREATE TABLE img (
+  ad_id INTEGER NOT NULL,
+  filename TEXT NOT NULL,
+  FOREIGN KEY(ad_id) REFERENCES ad(id) ON DELETE CASCADE
+);
+
 INSERT INTO user (username, password, grade)
 VALUES ('test@alumnat.institutcabanyes.cat', 'test', 'CFGM');
 
 INSERT INTO ad (user_id, name, description, subjects, size, price)
 SELECT user.id, 'Trek Caliber MTB', 'La bici solo tiene 200km','Bicicleta, Muntanya','M', 1099.99
 FROM user
+WHERE username = 'test@alumnat.institutcabanyes.cat';
+
+INSERT INTO img (ad_id, filename)
+SELECT ad.id, '1-mtb.jpg'
+FROM ad
+LEFT JOIN user on ad.user_id = user.id
 WHERE username = 'test@alumnat.institutcabanyes.cat';

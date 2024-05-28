@@ -4,23 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Llistat d'anuncis</title>
+    <link rel="stylesheet" href="../static/css/adlist.css">
 </head>
 <body>
-    <table>
-        <tr>
-            <th>Nom</th>
-            <th>Matèries</th>
-            <th>Preu</th>
-            <th>Usuari</th>
-        </tr>
+    <header>
+        <h1>Llistat d'anuncis</h1>
+        <button id="create-ad-btn">Crear anunci</button>
+    </header>
+    <div class="ad-container">
         {% for ad in ads %}
-        <tr>
-            <th>{{ ad['name'] }}</th>
-            <th>{{ ad['subjects'] }}</th>
-            <th>{{ ad['price'] }}</th>
-            <th>{{ ad['username'] }}</th>
-        </tr>
+        <a href="{{ url_for('addetail.detail', id=ad['adid']) }}">
+            <div class="ad-card">
+                <h2>{{ ad['name'] }}</h2>
+                <p><strong>Matèries:</strong> {{ ad['subjects'] }}</p>
+                <p><strong>Preu:</strong> {{ ad['price'] }}</p>
+                <img src="{{ url_for('adimage.serve_image', filename=ad['img']) }}" alt="Ad Image">
+            </div>
+        </a>            
         {% endfor %}
-    </table>
+    </div>
 </body>
 </html>
