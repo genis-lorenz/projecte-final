@@ -7,8 +7,7 @@ body {
 }
 
 .error-container {
-    background-color: #fd5151; /* Color salmón más oscuro */
-    border: 1px solid #ff3a3a;
+    background-color: #971010; /* Color salmón más oscuro */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
