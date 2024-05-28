@@ -1,5 +1,5 @@
 import os
-from flask import Blueprint, request, render_template
+from flask import Blueprint, request, render_template, g
 from werkzeug.utils import secure_filename
 from wallacabanyes.db import get_db
 
@@ -17,7 +17,7 @@ def allowed_file(filename):
 @bp.route('/create', methods=('GET', 'POST'))
 @login_required
 def create():
-    user_id = 1
+    user_id = g.user['id']
     cfgm = [ 'Hípica', 'Dinàmica', 'Itineraris', 'Muntanya', 'Bicicleta', 'Lleure', 'Natació', 'SOS', 'Aquàtic', 'Cordes']
     if request.method == 'GET':
         return render_template('adcreate.html', subjects=cfgm)
