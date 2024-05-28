@@ -29,7 +29,15 @@
         </tr>
         <tr>
             <th>Contacte</th>
+            <th>{{ ad['contact'] }}</th>
+        </tr>
+        <tr>
+            <th>Correu</th>
             <th><a href="mailto:{{ ad['username'] }}">Enviar correu</a></th>
+        </tr>
+        <tr>
+            <th>Imatge</th>
+            <th> <img src="{{ url_for('adimage.serve_image', filename=ad['img']) }}" alt="Ad Image"></th>
         </tr>
     </table>
 </body>
