@@ -22,37 +22,10 @@
         <div class="overlay-container">
             <h1>Benvolgut!</h1>
             <p>Per poder accedir a WallaCabanyes primer hauràs d'iniciar sessió</p>
-            <button onclick="toggleForm()">Registrar-se</button>
+            <a href="{{ url_for('auth.register') }}">
+                <button>Registrar-se</button>
+            </a>
         </div>
     </div>
-
-    <script>
-        function toggleForm() {
-            document.querySelector('.form-container h2').textContent = "Registrar-se";
-            document.querySelector('.form-container form').innerHTML = `
-                <input type="text" placeholder="CFGM / CFGS" required>
-                <input type="text" placeholder="Correu Electrònic" required>
-                <input type="password" placeholder="Contrasenya" required>
-                <button type="submit">Registrar-se</button>
-            `;
-            document.querySelector('.overlay-container h1').textContent = "Hola!";
-            document.querySelector('.overlay-container p').textContent = "Ingresa les dades personals requerides i accedeix a WallaCabanyes";
-            document.querySelector('.overlay-container button').textContent = "Iniciar Sessió";
-            document.querySelector('.overlay-container button').onclick = function() { toggleFormBack(); };
-        }
-
-        function toggleFormBack() {
-            document.querySelector('.form-container h2').textContent = "Iniciar Sessió";
-            document.querySelector('.form-container form').innerHTML = `
-                <input type="text" placeholder="Correu Electrònic" required>
-                <input type="password" placeholder="Contrasenya" required>
-                <button type="submit">Iniciar Sessió</button>
-            `;
-            document.querySelector('.overlay-container h1').textContent = "Benvolgut!";
-            document.querySelector('.overlay-container p').textContent = "Per poder accedir a WallaCabanyes primer hauràs d'iniciar sessió";
-            document.querySelector('.overlay-container button').textContent = "Registrar-se";
-            document.querySelector('.overlay-container button').onclick = function() { toggleForm(); };
-        }
-    </script>
 </body>
 </html>

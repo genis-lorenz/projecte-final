@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registre</title>
+    <link rel="stylesheet" href="../static/css/login.css">
+</head>
+<body>
+    <div class="image-container">
+        <img src="../static/css/Logo.png" alt="Your Image">
+    </div>
+    <div class="container">
+        <div class="form-container">
+            <h2>Registrar-se</h2>
+            <form method="POST">
+                <input id="grade" name="grade" type="text" placeholder="CFGM / CFGS" required>
+                <input id="username" name="username" type="text" placeholder="Correu Electrònic" required>
+                <input id="password" name="password" type="password" placeholder="Contrasenya" required>
+                <button type="submit">Registrar-se</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <h1>Hola!</h1>
+            <p>Ingresa les dades personals requerides i accedeix a WallaCabanyes</p>
+            <a href="{{ url_for('auth.login') }}">
+                <button>Iniciar Sessió</button>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -33,6 +33,36 @@ def login():
 
     return render_template('login.html')
 
+@bp.route('/register', methods=('GET', 'POST'))
+def register():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        grade = request.form['grade']
+        db = get_db()
+        error = None
+
+        if not username:
+            error = 'Username is required.'
+        elif not password:
+            error = 'Password is required.'
+
+        if error is None:
+            try:
+                db.execute(
+                    "INSERT INTO user (username, password, grade) VALUES (?, ?, ?)",
+                    (username, password, grade)
+                ),
+                db.commit()
+            except db.IntegrityError:
+                error = f"User {username} is already registered."
+            else:
+                return redirect(url_for("auth.login"))
+
+        return render_template('error.html', error=error)
+
+    return render_template('register.html')
+
 @bp.before_app_request
 def load_logged_in_user():
     user_id = session.get('user_id')
