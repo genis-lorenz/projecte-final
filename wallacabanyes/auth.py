@@ -27,7 +27,7 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user['id']
-            return redirect(url_for('adcreate.create'))
+            return redirect(url_for('main.main'))
 
         return render_template('error.html', error=error)
 
