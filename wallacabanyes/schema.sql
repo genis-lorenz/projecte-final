@@ -11,6 +11,7 @@ CREATE TABLE user (
 CREATE TABLE ad (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER NOT NULL,
+    contact TEXT,
     name TEXT NOT NULL,
     description TEXT,
     subjects TEXT NOT NULL,

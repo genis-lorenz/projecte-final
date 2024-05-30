@@ -12,14 +12,14 @@
             <img src="../static/css/Logo.png" alt="Your Image">
         </div>
         <div class="form-container">
-            <form action="/submit" method="POST" enctype="multipart/form-data">
+            <form method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="name">Nom de l'article:</label>
                     <input type="text" id="name" name="name" required>
                 </div>
                 <div class="form-group">
-                    <label for="description">Descripció:</label>
-                    <input type="text" id="description" name="description">
+                    <label for="contacte">Contacte:</label>
+                    <input type="text" id="contacte" name="contacte">
                 </div>
                 <div class="form-group full-width">
                     <label>Matèries:</label><br>
@@ -39,6 +39,10 @@
                 <div class="form-group full-width">
                     <label for="file">Fitxer:</label>
                     <input type="file" id="file" name="file">
+                </div>
+                <div class="form-group full-width">
+                    <label for="description">Descripció:</label>
+                    <textarea id="description" name="description" rows="4" cols="50"></textarea>
                 </div>
                 <div class="form-group full-width">
                     <input type="submit" value="Submit">

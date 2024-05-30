@@ -1,9 +1,12 @@
 from flask import Blueprint, render_template
 from wallacabanyes.db import get_db
 
+from .auth import login_required
+
 bp = Blueprint('adlist', __name__)
 
 @bp.route('/ads')
+@login_required
 def adlist():
     db = get_db()
 

@@ -1,7 +1,9 @@
 import os
-from flask import Blueprint, request, render_template
+from flask import Blueprint, request, render_template, g
 from werkzeug.utils import secure_filename
 from wallacabanyes.db import get_db
+
+from .auth import login_required
 
 bp = Blueprint('adcreate', __name__)
 
@@ -13,13 +15,15 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @bp.route('/create', methods=('GET', 'POST'))
+@login_required
 def create():
-    user_id = 1
+    user_id = g.user['id']
     cfgm = [ 'Hípica', 'Dinàmica', 'Itineraris', 'Muntanya', 'Bicicleta', 'Lleure', 'Natació', 'SOS', 'Aquàtic', 'Cordes']
     if request.method == 'GET':
         return render_template('adcreate.html', subjects=cfgm)
     
     name = request.form['name']
+    contacte = request.form['contacte']
     description = request.form['description']
     size = request.form['size']
     price = request.form['price']
@@ -42,13 +46,17 @@ def create():
     file.save(path)
 
     db = get_db()
-    db.execute(
-        "INSERT INTO ad (user_id, name, description, size, price, subjects) VALUES (?, ?, ?, ?, ?, ?)",
-        (user_id, name, description, size, price, ','.join(subjects)),
+    cursor = db.execute(
+        "INSERT INTO ad (user_id, contact, name, description, size, price, subjects) " +  
+        "VALUES (?, ?, ?, ?, ?, ?, ?) " +
+        "RETURNING *;",
+        (user_id, contacte, name, description, size, price, ','.join(subjects)),
     )
+    ad = cursor.fetchone()
+
     db.execute(
-        "INSERT INTO img (user_id, filename) VALUES (?, ?)",
-        (user_id, userfilename)
+        "INSERT INTO img (ad_id, filename) VALUES (?, ?)",
+        (ad['id'], userfilename)
     )
     db.commit()
 

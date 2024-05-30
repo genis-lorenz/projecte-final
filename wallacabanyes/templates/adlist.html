@@ -8,19 +8,23 @@
 </head>
 <body>
     <header>
-        <h1>Llistat d'anuncis</h1>
+        <h1>
+            <img src="../static/css/Logo.png" alt="Your Image" height="100px" width="400px">
+        </h1>
         <button id="create-ad-btn">Crear anunci</button>
     </header>
     <div class="ad-container">
         {% for ad in ads %}
-        <a href="{{ url_for('addetail.detail', id=ad['adid']) }}">
+        <a href="{{ url_for('addetail.detail', id=ad['adid']) }}" class="ad-card-link">
             <div class="ad-card">
-                <h2>{{ ad['name'] }}</h2>
-                <p><strong>Matèries:</strong> {{ ad['subjects'] }}</p>
-                <p><strong>Preu:</strong> {{ ad['price'] }}</p>
                 <img src="{{ url_for('adimage.serve_image', filename=ad['img']) }}" alt="Ad Image">
+                <div class="ad-card-content">
+                    <h2>{{ ad['name'] }}</h2>
+                    <p><strong>Matèries:</strong> {{ ad['subjects'] }}</p>
+                    <p><strong>Preu:</strong> {{ ad['price'] }}</p>
+                </div>
             </div>
-        </a>            
+        </a>
         {% endfor %}
     </div>
 </body>
