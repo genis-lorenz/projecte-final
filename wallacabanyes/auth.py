@@ -1,8 +1,11 @@
+import re
 import functools
 from flask import Blueprint, render_template, request, session, redirect, url_for, g
 from wallacabanyes.db import get_db
 
 bp = Blueprint('auth', __name__)
+
+regex = r'\b[A-Za-z0-9._%+-]+@alumnat\.institutcabanyes\.cat\b'
 
 @bp.route('/')
 def index():
@@ -38,14 +41,19 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        password2 = request.form['password2']
         grade = request.form['grade']
         db = get_db()
         error = None
 
         if not username:
-            error = 'Username is required.'
+            error = 'Correu requerit'
         elif not password:
-            error = 'Password is required.'
+            error = 'Contrasenya requerida'
+        elif password != password2:
+            error = 'Les contrasenyes no coincideixen'
+        elif not (re.fullmatch(regex, username)):
+            error = 'Correu Invàlid'
 
         if error is None:
             try:
@@ -55,7 +63,7 @@ def register():
                 ),
                 db.commit()
             except db.IntegrityError:
-                error = f"User {username} is already registered."
+                error = f"Usuari {username} ja registrat."
             else:
                 return redirect(url_for("auth.login"))
 

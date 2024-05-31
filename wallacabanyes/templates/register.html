@@ -14,9 +14,13 @@
         <div class="form-container">
             <h2>Registrar-se</h2>
             <form method="POST">
-                <input id="grade" name="grade" type="text" placeholder="CFGM / CFGS" required>
+                <input id="cfgm" name="grade" type="radio" value="CFGM" required>
+                <label for="grade">CFGM</label>
+                <input id="cfgs" name="grade" type="radio" value="CFGS" required>
+                <label for="grade">CFGS</label>
                 <input id="username" name="username" type="text" placeholder="Correu Electrònic" required>
                 <input id="password" name="password" type="password" placeholder="Contrasenya" required>
+                <input id="password2" name="password2" type="password" placeholder="Confirma la contrasenya" required>
                 <button type="submit">Registrar-se</button>
             </form>
         </div>
