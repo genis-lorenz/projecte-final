@@ -1,9 +1,12 @@
 import os
+
+
 from flask import Blueprint, request, render_template, g
 from werkzeug.utils import secure_filename
 from wallacabanyes.db import get_db
-
 from .auth import login_required
+from .main import cfgm, cfgs
+
 
 bp = Blueprint('adcreate', __name__)
 
@@ -18,9 +21,13 @@ def allowed_file(filename):
 @login_required
 def create():
     user_id = g.user['id']
-    cfgm = [ 'Hípica', 'Dinàmica', 'Itineraris', 'Muntanya', 'Bicicleta', 'Lleure', 'Natació', 'SOS', 'Aquàtic', 'Cordes']
+    if g.user['grade'] == 'CFGM':
+        subjects = cfgm
+    else:
+        subjects = cfgs
+    
     if request.method == 'GET':
-        return render_template('adcreate.html', subjects=cfgm)
+        return render_template('adcreate.html', subjects=subjects)
     
     name = request.form['name']
     contacte = request.form['contacte']
