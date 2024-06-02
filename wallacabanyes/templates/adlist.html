@@ -13,6 +13,21 @@
         </h1>
         <button id="create-ad-btn">Crear anunci</button>
     </header>
+    <div class="form-container">
+        <form method="POST">
+            <div class="form-group full-width">
+                <label>Matèries:</label><br>
+                {% for subject in subjects %}
+                    <label for="{{ subject }}">{{ subject }}</label>
+                    <input type="checkbox" class="checkbox-round" id="{{ subject }}" name="subject_check" value="{{ subject }}">
+                {% endfor %}
+                <input type="submit" value="Cercar">
+            </div>
+        </form>
+        <button>
+            <a href="{{ url_for('adlist.adlist') }}">Eliminar filtres</a>
+        </button>
+    </div>
     <div class="ad-container">
         {% for ad in ads %}
         <a href="{{ url_for('addetail.detail', id=ad['adid']) }}" class="ad-card-link">
