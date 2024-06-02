@@ -45,12 +45,12 @@ WHERE username = 'test@alumnat.institutcabanyes.cat';
 INSERT INTO img (ad_id, filename)
 SELECT ad.id, '1-mtb.jpg'
 FROM ad
-WHERE name = 'Trek Caliber MTB'
+WHERE name = 'Trek Caliber MTB';
 
 INSERT INTO img (ad_id, filename)
 SELECT ad.id, '1-aletes.jpg'
 FROM ad
-WHERE name = 'Aletes'
+WHERE name = 'Aletes';
 
 INSERT INTO ad (user_id, name, description, subjects, size, price)
 SELECT user.id, 'Guants de boxe', 'Vermells','Lleure','12oz', 25
@@ -65,9 +65,9 @@ WHERE username = 'test2@alumnat.institutcabanyes.cat';
 INSERT INTO img (ad_id, filename)
 SELECT ad.id, '1-boxe.jpg'
 FROM ad
-WHERE name = 'Guants de boxe'
+WHERE name = 'Guants de boxe';
 
 INSERT INTO img (ad_id, filename)
 SELECT ad.id, '1-mancuerna.jpg'
 FROM ad
-WHERE name = 'Mancuernas'
+WHERE name = 'Mancuernas';
