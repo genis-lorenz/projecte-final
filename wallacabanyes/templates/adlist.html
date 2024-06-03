@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Llistat d'anuncis</title>
-    <link rel="stylesheet" href="../static/css/adlist.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/adlist.css') }}">
 </head>
 <body>
     <header>
         <h1>
-            <img src="../static/css/Logo.png" alt="Your Image" height="100px" width="400px">
+            <img src="{{ url_for('static', filename='css/Logo.png') }}" alt="Your Image" height="100px" width="400px">
         </h1>
-        <button id="create-ad-btn">Crear anunci</button>
+        <button id="create-ad-btn"><a href="{{ url_for('adcreate.create') }}">Crear anunci</a></button>
     </header>
     <div class="form-container">
         <form method="POST">

@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creació d'anunci</title>
-    <link rel="stylesheet" href="../static/css/create.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/create.css') }}">
 </head>
 <body>
     <div class="container">
         <div class="image-container">
-            <img src="../static/css/Logo.png" alt="Your Image">
+            <img src="{{ url_for('static', filename='css/Logo.png') }}" alt="Your Image">
         </div>
         <div class="form-container">
             <form method="POST" enctype="multipart/form-data">
