@@ -15,35 +15,39 @@
         </h1>
         <button id="create-ad-btn"><a href="{{ url_for('adcreate.create') }}">Crear anunci</a></button>
     </header>
-    <div class="form-container">
-        <form method="POST">
-            <div class="form-group full-width">
-                <label>Matèries:</label><br>
-                {% for subject in subjects %}
-                    <label for="{{ subject }}">{{ subject }}</label>
-                    <input type="checkbox" class="checkbox-round" id="{{ subject }}" name="subject_check" value="{{ subject }}">
-                {% endfor %}
-                <input type="submit" value="Cercar">
-            </div>
-        </form>
-        <button>
-            <a href="{{ url_for('adlist.adlist') }}">Eliminar filtres</a>
-        </button>
-    </div>
-    <div class="ad-container">
-        {% for ad in ads %}
-        <a href="{{ url_for('addetail.detail', id=ad['adid']) }}" class="ad-card-link">
-            <div class="ad-card">
-                <img src="{{ url_for('adimage.serve_image', filename=ad['img']) }}" alt="Ad Image">
-                <div class="ad-card-content">
-                    <h2>{{ ad['name'] }}</h2>
-                    <p><strong>Matèries:</strong> {{ ad['subjects'] }}</p>
-                    <p><strong>Preu:</strong> {{ ad['price'] }}</p>
-                    <p><strong>Grau:</strong> {{ ad['grade'] }}</p>
+    <div class="content-container">
+        <div class="ad-container">
+            {% for ad in ads %}
+            <a href="{{ url_for('addetail.detail', id=ad['adid']) }}" class="ad-card-link">
+                <div class="ad-card">
+                    <img src="{{ url_for('adimage.serve_image', filename=ad['img']) }}" alt="Ad Image">
+                    <div class="ad-card-content">
+                        <h2>{{ ad['name'] }}</h2>
+                        <p><strong>Matèries:</strong> {{ ad['subjects'] }}</p>
+                        <p><strong>Preu:</strong> {{ ad['price'] }}</p>
+                        <p><strong>Grau:</strong> {{ ad['grade'] }}</p>
+                    </div>
                 </div>
-            </div>
-        </a>
-        {% endfor %}
+            </a>
+            {% endfor %}
+        </div>
+        <div class="form-container">
+            <form method="POST">
+                <div class="form-group full-width">
+                    <label class="form-title">Matèries:</label><br>
+                    {% for subject in subjects %}
+                        <div class="checkbox-container">
+                            <label for="{{ subject }}">{{ subject }}</label>
+                            <input type="checkbox" class="checkbox-round" id="{{ subject }}" name="subject_check" value="{{ subject }}">
+                        </div>
+                    {% endfor %}
+                    <input type="submit" class="btn" value="Cercar">
+                </div>
+            </form>
+            <button class="btn btn-eliminar">
+                <a href="{{ url_for('adlist.adlist') }}">Eliminar filtres</a>
+            </button>
+        </div>
     </div>
 </body>
 </html>
