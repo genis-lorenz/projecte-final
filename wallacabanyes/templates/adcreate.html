@@ -9,7 +9,9 @@
 <body>
     <div class="container">
         <div class="image-container">
-            <img src="{{ url_for('static', filename='css/Logo.png') }}" alt="Your Image">
+            <a class="button" href="{{ url_for('main.main') }}">
+                <img src="{{ url_for('static', filename='css/Logo.png') }}" alt="Your Image">
+            </a>
         </div>
         <div class="form-container">
             <form method="POST" enctype="multipart/form-data">

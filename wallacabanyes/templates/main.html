@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 <body>
+    <div class="image-container">
+            <img src="{{ url_for('static', filename='css/Logo.png') }}" alt="Your Image">
+    </div>
     <div class="button-container">
         <a class="button" href="{{ url_for('adcreate.create') }}">Crear anunci</a>
         <a class="button" href="{{ url_for('adlist.adlist') }}">Llistat d'anuncis</a>
