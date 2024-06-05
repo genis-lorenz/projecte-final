@@ -4,41 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detall d'anunci</title>
+    <link rel="stylesheet" href="../static/css/addetail.css">
 </head>
 <body>
-    <table>
-        <tr>
-            <th>Nom</th>
-            <th>{{ ad['name'] }}</th>
-        </tr>
-        <tr>
-            <th>Descripció</th>
-            <th>{{ ad['description'] }}</th>
-        </tr>
-        <tr>
-            <th>Matèries</th>
-            <th>{{ ad['subjects'] }}</th>
-        </tr>
-        <tr>
-            <th>Mida</th>
-            <th>{{ ad['size'] }}</th>
-        </tr>
-        <tr>
-            <th>Preu</th>
-            <th>{{ ad['price'] }}</th>
-        </tr>
-        <tr>
-            <th>Contacte</th>
-            <th>{{ ad['contact'] }}</th>
-        </tr>
-        <tr>
-            <th>Correu</th>
-            <th><a href="mailto:{{ ad['username'] }}">Enviar correu</a></th>
-        </tr>
-        <tr>
-            <th>Imatge</th>
-            <th> <img src="{{ url_for('adimage.serve_image', filename=ad['img']) }}" alt="Ad Image"></th>
-        </tr>
-    </table>
+    <header>
+        <h1>
+            <a class="button" href="{{ url_for('main.main') }}">
+                <img src="{{ url_for('static', filename='css/Logo.png') }}" alt="Your Image" height="100px" width="400px">
+            </a>
+        </h1>
+        <div class="header-buttons">
+            <button id="create-ad-btn"><a href="{{ url_for('adcreate.create') }}">Crear anunci</a></button>
+            <button id="ad-list-btn"><a href="{{ url_for('adlist.adlist') }}">Llista d'anuncis</a></button>
+        </div>
+    </header>
+    <div class="content-container">
+        <div class="card-container">
+            <div class="ad-card">
+                <img src="{{ url_for('adimage.serve_image', filename=ad['img']) }}" alt="Ad Image">
+                <div class="ad-card-content">
+                    <h2>{{ ad['name'] }}</h2>
+                    <p><strong>Descripció:</strong> {{ ad['description'] }}</p>
+                    <p><strong>Matèries:</strong> {{ ad['subjects'] }}</p>
+                    <p><strong>Mida:</strong> {{ ad['size'] }}</p>
+                    <p><strong>Preu:</strong> {{ ad['price'] }}</p>
+                    <p><strong>Contacte:</strong> {{ ad['contact'] }}</p>
+                    <p><strong>Correu:</strong> <a href="mailto:{{ ad['username'] }}">Enviar correu</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Tu Empresa. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>

@@ -1,0 +1,132 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    margin: 0;
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #ff4d4d;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #e43b3b;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    border-radius: 5px;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 26px;
+    letter-spacing: 1px;
+}
+
+/* Botón de Crear Anunci */
+#create-ad-btn, #ad-list-btn {
+    background: linear-gradient(to right, #ff4d4d, #ff6666);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+}
+
+#create-ad-btn a, #ad-list-btn a {
+    color: white;
+    text-decoration: none;
+}
+
+#create-ad-btn:hover, #ad-list-btn:hover {
+    background: linear-gradient(to right, #ff6666, #ff4d4d);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.content-container {
+    display: flex;
+    justify-content: center;
+}
+
+.card-container {
+    background-color: white;
+    color: #333;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.ad-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.ad-card img {
+    width: 80%; /* Reduciendo el ancho de la imagen al 80% del contenedor */
+    max-height: 300px; /* Estableciendo una altura máxima para evitar que la imagen sea demasiado grande */
+    display: block;
+    margin: -15px auto 15px; /* Ajustando el margen superior e inferior para expandir la imagen hacia arriba */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+
+
+.ad-card-content {
+    padding: 20px;
+    font-size: 18px; /* Aumentado el tamaño del texto */
+    line-height: 1.6; /* Aumentado el espacio entre líneas */
+}
+
+
+.ad-card-content {
+    padding: 20px;
+    font-size: 18px; /* Aumentado el tamaño del texto */
+    line-height: 1.6; /* Aumentado el espacio entre líneas */
+}
+
+
+.ad-card-content h2 {
+    margin: 0 0 15px;
+    font-size: 20px;
+    color: #ff4d4d;
+}
+
+.ad-card-content p {
+    margin: 0;
+    color: #555;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #ff6666;
+    color: white;
+    border-radius: 5px;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}
